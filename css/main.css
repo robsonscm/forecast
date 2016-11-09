@@ -82,15 +82,18 @@ header {
         .banner>.curWeather>.locaW {
             font-size: 120%;
         }
-        .banner>.curWeather>.tempW,
-        .banner>.curWeather>.sensW {
+        .banner>.curWeather>#tempW,
+        .banner>.curWeather>#sensW {
             display: inline;
         }
-        .banner>.curWeather>.tempW::before{
+        .banner>.curWeather>#tempW::before{
             content: "Now: ";
         }
-        .banner>.curWeather>.sensW::before{
+        .banner>.curWeather>#sensW::before{
             content: " | Real: ";
+        }
+        #tempW>i, #sensW>i{
+            font-size: 120%;
         }
 body {
     width: 100%;
@@ -275,7 +278,7 @@ body {
     display: none;
 }
 footer {
-    text-align: right;
+    text-align: center;
 }
     footer p{
         font-size: .8em;

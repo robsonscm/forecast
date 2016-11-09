@@ -106,22 +106,30 @@ APP4CAST_PAGE.buildPage = function (jsonData) {
     let h1 = APP4CAST_PAGE.createNewDOM("h1","","","24<span>cast</span>");
     let iconW = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass(jsonData.currently.icon),"iconW","");
     let summW = APP4CAST_PAGE.createNewDOM("p","summW","",jsonData.currently.summary);
-    let tempW = APP4CAST_PAGE.createNewDOM("p","tempW","",Math.round(jsonData.currently.temperature)+ " " +dTemp);
-    let sensW = APP4CAST_PAGE.createNewDOM("p","sensW","",Math.round(jsonData.currently.apparentTemperature)+ " " +dTemp);
+    let icoTW = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("temp"),"icoTW","");
+    let icoSW = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("temp"),"icoSW","");
+    let tempW = APP4CAST_PAGE.createNewDOM("p","temp","tempW",Math.round(jsonData.currently.temperature));
+    let sensW = APP4CAST_PAGE.createNewDOM("p","temp","sensW",Math.round(jsonData.currently.apparentTemperature));
     let locaW = APP4CAST_PAGE.createNewDOM("p","locaW","",APP4CAST_DATA.googleLocation);
     let hourW = APP4CAST_PAGE.createNewDOM("p","hourW","",moment(new Date(jsonData.currently.time * 1000)).format("MMM Do YYYY, ha"));
     let curWeather = APP4CAST_PAGE.createNewDOM("div","curWeather","","");
     let buttons = APP4CAST_PAGE.createNewDOM("div","buttons","","");
     let iconT = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("temp"),"iconT","");
     let iconD = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("day"),"iconD"," ");
+    //
     buttons.appendChild(iconT);
     buttons.appendChild(iconD);
-    banner.appendChild(buttons);
-    banner.appendChild(h1);
+    //
+    tempW.appendChild(icoTW);
+    sensW.appendChild(icoSW);
+    //
     curWeather.appendChild(locaW);
     curWeather.appendChild(summW);
     curWeather.appendChild(tempW);
     curWeather.appendChild(sensW);
+    //
+    banner.appendChild(h1);
+    banner.appendChild(buttons);
     banner.appendChild(iconW);
     banner.appendChild(curWeather);
     header.appendChild(banner);
@@ -141,11 +149,9 @@ APP4CAST_PAGE.buildPage = function (jsonData) {
             let tBox = APP4CAST_PAGE.createNewDOM("div","textBox","","");
             let summ = APP4CAST_PAGE.createNewDOM("p","","summ",item.summary);
             let hour = APP4CAST_PAGE.createNewDOM("p","","hour",moment(sysDate).format("MMM Do YYYY, ha"));
-            // let temp = APP4CAST_PAGE.createNewDOM("p","temp","temp",Math.round(item.temperature) + " " +dTemp);
             let ico1 = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("temp"),"icon1","");
             let ico2 = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("temp"),"icon2","");
             let temp = APP4CAST_PAGE.createNewDOM("p","temp","temp",Math.round(item.temperature));
-            // let sens = APP4CAST_PAGE.createNewDOM("p","temp","sens",Math.round(item.apparentTemperature) + " " + dTemp);
             let sens = APP4CAST_PAGE.createNewDOM("p","temp","sens",Math.round(item.apparentTemperature));
             let icon = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass(item.icon),"","");
             let spnT = APP4CAST_PAGE.createNewDOM("span","","","Temp");
@@ -231,6 +237,24 @@ APP4CAST_PAGE.buildPage = function (jsonData) {
             item.classList.remove(iconClass);
             item.classList.add(iconNew);
         });
+        //
+        let listTemp = document.querySelectorAll(".temp");
+        listTemp.forEach(function (item) {
+            let curNumber = null;
+            let newNumber = 0;
+            let newText = null;
+            if (item.innerHTML.indexOf("<") != -1){
+                curNumber = item.innerHTML.substr(0,item.innerHTML.indexOf("<"));
+            }
+            if (iconNew == "wi-fahrenheit") {
+                newNumber = Math.round(curNumber * 9/5 + 32);
+            }else{
+                newNumber = Math.round((curNumber - 32) * (5 / 9));
+            }
+            newText = item.innerHTML.replace(curNumber,newNumber);
+            item.innerHTML = newText;
+            // item.innerText.replace(item.innerText,String(Numberitem.innerText*-1));
+        })
     });
 };
 APP4CAST_PAGE.createNewDOM = function (evType, evClass, evID, evContent) {
