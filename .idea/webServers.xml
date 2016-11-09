@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e928a7ec-9c58-41e4-b0b5-c47bf50406b5" name="stra0165.edumedia.ca" url="http://stra0165.edumedia.ca">
+        <fileTransfer host="stra0165.edumedia.ca" port="21" rootFolder="/htdocs/mad9014">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

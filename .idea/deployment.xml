@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="stra0165.edumedia.ca">
+    <serverData>
+      <paths name="stra0165.edumedia.ca">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Applications/MAMP/htdocs/mad9014/forecast" local="$PROJECT_DIR$" web="/htdocs/mad9014/forecast" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
