@@ -9,7 +9,7 @@ $apikey = "6ce9320aca5d6bd7c24747f0f7e6a8a8";
 $units = "ca";
 //enter your units for the weather here
 
-$latlng = "45.5555,-75.5555"; //default latitude and longitude
+$latlng = "45.4215,-75.6972"; //default latitude and longitude
 if( isset($_REQUEST['latlng'])){
     $latlng = trim($_REQUEST['latlng']);
 }

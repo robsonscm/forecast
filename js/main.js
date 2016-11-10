@@ -3,8 +3,8 @@
 var APP4CAST_PAGE = {};
 var APP4CAST_DATA = {};
 //
-APP4CAST_DATA.position = "45.5555,-75.5555";     //Default Value
-APP4CAST_DATA.googleLocation = "Local Weather";  //Default Value
+APP4CAST_DATA.position = "45.4215,-75.6972";     //Default Value
+APP4CAST_DATA.googleLocation = "Ottawa";  //Default Value
 //
 APP4CAST_DATA.getGeoLocation = function () {
     //
@@ -32,7 +32,9 @@ APP4CAST_DATA.getGeoLocation = function () {
             2: 'Unable to determine your location.',
             3: 'Location request took too long.'
         };
-        alert("Error: " + errors[error.code] + "... " + err.message );
+        console.log("Error getGeoLocation: " + errors[error.code] + "... " + err.message );
+        APP4CAST_DATA.position = "45.4215,-75.6972";
+        APP4CAST_DATA.getExternalData();
     };
     //
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -69,7 +71,7 @@ APP4CAST_DATA.getExternalData = function () {
         //
     }).catch(function(err){
         //
-        alert(err.message)
+        alert("MESSAGE: "+err.message)
     });
 };
 //
@@ -88,11 +90,12 @@ APP4CAST_DATA.getGoogleAPIData = function () {
                     APP4CAST_DATA.googleLocation = APP4CAST_DATA.googleLocation.substr(0,APP4CAST_DATA.googleLocation.indexOf("-"));
                 }
             } else {
-                APP4CAST_DATA.googleLocation = "Local Weather";
+                APP4CAST_DATA.googleLocation = "Ottawa";
             }
         })
         .catch( function(error){
-            APP4CAST_DATA.googleLocation = "Local Weather";
+            APP4CAST_DATA.googleLocation = "Ottawa";
+            console.log("Error: getGoogleAPIData - "+error);
         });
 }
 //
@@ -116,6 +119,9 @@ APP4CAST_PAGE.buildPage = function (jsonData) {
     let buttons = APP4CAST_PAGE.createNewDOM("div","buttons","","");
     let iconT = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("temp"),"iconT","");
     let iconD = APP4CAST_PAGE.createNewDOM("i","wi "+APP4CAST_PAGE.findIconClass("day"),"iconD"," ");
+    //
+    icoTW.title = "Temperature scale (Fahrenheit/Celsius)";
+    icoSW.title = "Check Next/Preview day's temperature";
     //
     buttons.appendChild(iconT);
     buttons.appendChild(iconD);
@@ -256,6 +262,7 @@ APP4CAST_PAGE.buildPage = function (jsonData) {
             // item.innerText.replace(item.innerText,String(Numberitem.innerText*-1));
         })
     });
+    document.getElementById("loadingBox").style.display = "none";
 };
 APP4CAST_PAGE.createNewDOM = function (evType, evClass, evID, evContent) {
     //

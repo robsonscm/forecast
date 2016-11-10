@@ -57,12 +57,13 @@ header {
                 /*border: 1px solid red;*/
             }
             .banner>.buttons>#iconT:hover,
-            .banner>.buttons>#iconD:hover,
+            .banner>.buttons>#iconD:hover/*,
             .banner>.buttons>#iconT:active,
-            .banner>.buttons>#iconD:active{
+            .banner>.buttons>#iconD:active*/{
                 text-shadow: 0 0 10px yellow,
                              0 0 10px orange,
                              0 0 10px red;
+                cursor: pointer;
             }
         .banner>.wi {
             font-size: 2.5em;
@@ -100,7 +101,7 @@ body {
     max-width: 100%;
     min-width: 20em;
     line-height: 1.5;
-    /*background-color: darkgreen;*/
+    background-color: black;
     background: url(../img/1920x1200-weather-wallpaper.jpg) no-repeat center center fixed; ;
     background-size: cover;
     /*border: 1px solid blue;*/
@@ -125,7 +126,7 @@ body {
             /*border: 1px solid yellow;*/
             text-align: center;
             width: 100%;
-            text-shadow: 2px 2px 0 black;
+            text-shadow: 1px 1px 1px #000, 2px 2px 2px #000;
         }
     .iconBox{
         display: block;
@@ -157,7 +158,7 @@ body {
                 left: 50%;
                 transform: translate(-50%, -50%);
                 font-size: 4.5em;
-                text-shadow: 1px 1px 0 black;
+                text-shadow: 2px 2px 0 #000;
             }
 .high {
     display: none;
@@ -205,12 +206,12 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', endColorstr='#26558b',GradientType=0 ); /* IE6-9 */
 }
 .wind{
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3e2c7+0,c19e67+50,b68d4c+51,e9d4b3+100;L+Brown+3D */
-    background: #f3e2c7; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  #f3e2c7 0%, #c19e67 50%, #b68d4c 51%, #e9d4b3 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover,  #f3e2c7 0%,#c19e67 50%,#b68d4c 51%,#e9d4b3 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center,  #f3e2c7 0%,#c19e67 50%,#b68d4c 51%,#e9d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3e2c7', endColorstr='#e9d4b3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e4efc0+0,abbd73+100;Olive+3D+%232 */
+    background: rgb(228,239,192); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(228,239,192,1) 0%, rgba(171,189,115,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(228,239,192,1) 0%,rgba(171,189,115,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(top,  rgba(228,239,192,1) 0%,rgba(171,189,115,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4efc0', endColorstr='#abbd73',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .fog{
     background: linear-gradient(rgba(255, 255, 255,0.6), rgba(0, 170, 255,0.6));
@@ -242,9 +243,9 @@ body {
 .clear-day{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fceabb+0,fccd4d+50,f8b500+51,fbdf93+100;Orange+3D+%235 */
     background: rgba(248,181,0,1); /* Old browsers */
-    background: -moz-linear-gradient(top,   rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(-45deg,   rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg,  rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(-45deg,  rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
 }
 .clear-night{
@@ -283,7 +284,29 @@ footer {
     footer p{
         font-size: .8em;
     }
-
+    footer>a {
+        text-decoration: none;
+        display: block;
+        clear: both;
+    }
+    #darkSky {
+        width: 150px;
+        height: 60px;
+    }
+    #darkSky:hover {
+        cursor: pointer;
+    }
+    #loadingBox {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        height: 90px;
+        /*border: 5px solid red;*/
+    }
+    #loadingImg {
+        max-width: 150px;
+        max-height: 90px;
+    }
 @media screen and (min-width:600px) {
     .banner>.wi {
         font-size: 3.5em;
@@ -336,7 +359,7 @@ footer {
         /*border: 2px solid midnightblue;*/
     }
     #summ, #hour {
-        font-size: 3.5vw;
+        font-size: 3vw;
     }
     #temp, #sens{
         display: block;
@@ -351,7 +374,7 @@ footer {
             float: left;
             vertical-align: text-bottom;
             min-height: 100%;
-            margin-top: 1vw;
+            margin-top: .5vw;
         }
 }
 @media screen and (min-width:800px) {
@@ -413,7 +436,7 @@ footer {
         clear: both;
         text-align: center;
         /*border: black solid 1px;*/
-        padding-top: 1em;
+        padding-top: .5em;
     }
     #temp>span, #sens>span {
         width: 100%;
@@ -452,21 +475,24 @@ footer {
         line-height: 1.2;
     }
     .iconBox>.wi {
-        margin-top: .7em;
-        font-size: .5vw;
+        margin-top: .5em;
+        font-size: .6vw;
     }
-    #summ, #hour {
-        font-size: 1.05vw;
+    #hour {
+        font-size: 1vw;
+    }
+    #summ {
+        font-size: .9vw;
     }
     #temp, #sens{
         font-size: 1.1vw;
         text-align: right;
         /*border: black solid 1px;*/
-        padding-top: .3em;
+        padding-top: 0;
     }
     #temp>span, #sens>span {
         font-size: .8vw;
-        margin-top: .2em;
+        margin-top: .1em;
         float: left;
         /*vertical-align: text-bottom;*/
         text-align: left;
